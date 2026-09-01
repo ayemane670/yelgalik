@@ -10,8 +10,8 @@ body {
   @apply bg-paper text-ink font-body antialiased;
 }
 
-h1, h2, h3, .font-display {
-  @apply font-display;
+h1, h2, h3 {
+  font-family: var(--font-tajawal), sans-serif;
 }
 
 /* Live match pulse — used sparingly, only on the fire-badge count */
