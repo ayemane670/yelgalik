@@ -74,3 +74,13 @@ jobs:
         with:
           name: yelgalik-release-apk
           path: android/app/build/outputs/apk/release/app-release.apk
+
+      - name: Create public GitHub Release with direct download link
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v1.0.${{ github.run_number }}
+          name: يلقالك v1.0.${{ github.run_number }}
+          body: نسخة APK جاهزة للتثبيت المباشر — لا يتطلب حساب GitHub للتحميل.
+          files: android/app/build/outputs/apk/release/app-release.apk
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
