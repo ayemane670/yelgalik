@@ -1,10 +1,10 @@
 "use client";
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
 const REASONS = ["محتوى مزيف", "احتيال", "إزعاج/سبام", "محتوى غير لائق", "أخرى"];
 
-export default function ReportPage() {
+function ReportContent() {
   const router = useRouter();
   const params = useSearchParams();
   const [reason, setReason] = useState(REASONS[0]);
@@ -60,5 +60,13 @@ export default function ReportPage() {
         <button className="w-full bg-danger text-paper font-bold py-3.5 rounded-pill">إرسال البلاغ</button>
       </form>
     </main>
+  );
+}
+
+export default function ReportPage() {
+  return (
+    <Suspense fallback={<main className="px-5 pt-24 text-center text-inkSoft">جارِ التحميل...</main>}>
+      <ReportContent />
+    </Suspense>
   );
 }

@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import { ArrowRight, Flame, MapPin, Star } from "lucide-react";
 
@@ -10,7 +10,7 @@ function scoreLabel(score: number) {
   return { emoji: "⚪", label: "تطابق ضعيف" };
 }
 
-export default function ResultsPage() {
+function ResultsContent() {
   const params = useSearchParams();
   const router = useRouter();
   const requestId = params.get("request_id");
@@ -93,5 +93,13 @@ export default function ResultsPage() {
         </p>
       )}
     </main>
+  );
+}
+
+export default function ResultsPage() {
+  return (
+    <Suspense fallback={<main className="px-5 pt-24 text-center text-inkSoft">جارِ التحميل...</main>}>
+      <ResultsContent />
+    </Suspense>
   );
 }
