@@ -19,22 +19,14 @@ export default function SignupPage() {
     setError(null);
     const supabase = createClient();
 
-    const { data, error: signUpError } = await supabase.auth.signUp({ email, password });
+    const { data, error: signUpError } = await supabase.auth.signUp({
+      email,
+      password,
+      options: { data: { full_name: fullName, phone } },
+    });
+    setLoading(false);
     if (signUpError || !data.user) {
       setError(signUpError?.message ?? "فشل إنشاء الحساب");
-      setLoading(false);
-      return;
-    }
-
-    const { error: profileError } = await supabase.from("users").insert({
-      id: data.user.id,
-      full_name: fullName,
-      phone,
-    });
-
-    setLoading(false);
-    if (profileError) {
-      setError(profileError.message);
       return;
     }
     router.push("/home");
