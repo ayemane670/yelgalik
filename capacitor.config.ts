@@ -20,7 +20,7 @@ const config: CapacitorConfig = {
   appName: "يلقالك",
   webDir: "public", // required by Capacitor CLI even though we load a remote URL
   server: {
-    url: "https://yelgalik.vercel.app", // ⬅️ replace with your real deployed URL
+    url: "https://yelgalik-dnifxu89v-ayemane670.vercel.app", // ⬅️ replace with your real deployed URL
     cleartext: false,
   },
   ios: {
