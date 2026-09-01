@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  direction: rtl;
+}
+
+body {
+  @apply bg-paper text-ink font-body antialiased;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-tajawal), sans-serif;
+}
+
+/* Live match pulse — used sparingly, only on the fire-badge count */
+@keyframes pulse-flame {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.55; }
+}
+.pulse-flame {
+  animation: pulse-flame 1.8s ease-in-out infinite;
+}
+
+::selection {
+  background: #0E6E5C;
+  color: #FAF8F4;
+}
